@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Office World Cup Sweepstake 2026</title>
+<title>NBCC World Cup Sweepstake 2026</title>
 <style>
   :root{
     --green:#1d9e75; --green-d:#0f6e56; --ink:#13211c; --paper:#f6f8f6;
@@ -23,6 +23,9 @@
        align-items:flex-end;gap:16px;flex-wrap:wrap}
   .title h1{margin:0;font-size:26px;letter-spacing:-.4px}
   .title p{margin:4px 0 0;opacity:.9;font-size:13.5px}
+  .brand{display:flex;align-items:center;gap:14px;min-width:0}
+  .logo{height:58px;width:auto;background:#fff;border-radius:12px;padding:5px 8px;box-shadow:0 2px 10px rgba(0,0,0,.2)}
+  @media(max-width:560px){.logo{height:44px}}
   .prize{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);border-radius:12px;
        padding:8px 14px;font-size:13.5px;max-width:340px}
   .prize b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.6px;opacity:.85;margin-bottom:2px}
@@ -130,9 +133,12 @@
 <body>
 <header class="hero">
   <div class="hero-in">
-    <div class="title">
-      <h1 id="appTitle">Office World Cup Sweepstake</h1>
-      <p>FIFA World Cup 2026 · live scores · last team standing wins</p>
+    <div class="brand">
+      <img class="logo" src="nbcc-logo.png" alt="NBCC">
+      <div class="title">
+        <h1 id="appTitle">NBCC World Cup Sweepstake</h1>
+        <p>FIFA World Cup 2026 · live scores · last team standing wins</p>
+      </div>
     </div>
     <div class="prize"><b>🏆 Winner's prize</b><span id="prizeText">Set the prize in Settings</span></div>
   </div>
@@ -223,7 +229,7 @@
       <div class="settings-grid">
         <div>
           <label class="fld" for="setTitle">Game title</label>
-          <input id="setTitle" style="width:100%" placeholder="Office World Cup Sweepstake">
+          <input id="setTitle" style="width:100%" placeholder="NBCC World Cup Sweepstake">
         </div>
         <div>
           <label class="fld" for="setPrize">Winner's prize</label>
@@ -328,7 +334,7 @@ function remoteLoad(initial){
 }
 
 /* ============================ State ============================ */
-var DEFAULT_STATE = {title:"Office World Cup Sweepstake", prize:"", swapsOpen:true, players:[]};
+var DEFAULT_STATE = {title:"NBCC World Cup Sweepstake", prize:"", swapsOpen:true, players:[]};
 var state = loadState();
 var allEvents = [];     // aggregated, de-duplicated events with _matchday/_stage attached
 var teamsById = {};     // id -> {id,name,abbr,logo,color}
@@ -599,7 +605,7 @@ function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,function(c){retur
 function renderAll(){ renderHeader(); renderDraw(); renderLive(); renderBoard(); renderSettings(); }
 
 function renderHeader(){
-  document.getElementById("appTitle").textContent=state.title||"Office World Cup Sweepstake";
+  document.getElementById("appTitle").textContent=state.title||"NBCC World Cup Sweepstake";
   document.getElementById("prizeText").textContent=state.prize?state.prize:"Set the prize in Settings";
 }
 
@@ -860,7 +866,7 @@ document.querySelectorAll(".btn-day").forEach(function(b){
 
 // settings
 document.getElementById("saveSettings").onclick=function(){
-  state.title=document.getElementById("setTitle").value.trim()||"Office World Cup Sweepstake";
+  state.title=document.getElementById("setTitle").value.trim()||"NBCC World Cup Sweepstake";
   state.prize=document.getElementById("setPrize").value.trim();
   state.swapsOpen=document.getElementById("setSwaps").checked;
   saveState(); renderAll();
