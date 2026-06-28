@@ -537,8 +537,11 @@ function teamUsage(){
 function pickRandomTeam(){
   if(!teamsList.length) return null;
   var u=teamUsage();
-  var min=Infinity; teamsList.forEach(function(t){ if(u[t.id]<min) min=u[t.id]; });
-  var pool=teamsList.filter(function(t){ return u[t.id]===min; });
+  // Only draw teams still in the tournament — skip any already knocked out.
+  var base=teamsList.filter(function(t){ var s=statsById[t.id]; return !s || s.alive!==false; });
+  if(!base.length) base=teamsList;
+  var min=Infinity; base.forEach(function(t){ if(u[t.id]<min) min=u[t.id]; });
+  var pool=base.filter(function(t){ return u[t.id]===min; });
   return pool[Math.floor(Math.random()*pool.length)].id;
 }
 function drawForPlayer(pid, animate){
